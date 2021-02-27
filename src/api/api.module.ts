@@ -1,9 +1,4 @@
-import {
-  MiddlewareConsumer,
-  Module,
-  NestModule,
-  RequestMethod,
-} from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BaseModule } from '@base/base.module';
 import * as entities from '../entities';
@@ -31,9 +26,6 @@ export class ApiModule implements NestModule {
     consumer
       .apply(UserAuthMiddleware)
       .exclude('api/users/authentication/(.*)', 'api/users/register')
-      .forRoutes({
-        path: 'users',
-        method: RequestMethod.ALL,
-      });
+      .forRoutes('users', 'admin');
   }
 }

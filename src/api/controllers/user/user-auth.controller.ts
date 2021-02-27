@@ -6,7 +6,7 @@ import { Controller, Post, Body, HttpStatus } from '@nestjs/common';
 /**
  * @description The controllers that will be used for the authencation.
  */
-@ApiTags('user')
+@ApiTags('User')
 @Controller('users/authentication')
 export class UserAuthenticationController {
   constructor(private readonly _userAuthService: UserAuthService) {}

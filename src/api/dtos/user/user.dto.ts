@@ -9,6 +9,7 @@ import {
 } from 'class-validator';
 import { GenderTypeEnum, UserRoleEnum } from '@api/enums';
 import { ObjectIdColumn } from 'typeorm';
+import { MetadataRespone } from '../base';
 
 /**
  * @class
@@ -143,7 +144,7 @@ export class CreateUserRequest {
  * @name UpdateEndUserRequest
  * @description Update user request DTO.
  */
-export class UpdateEndUserRequest {
+export class UpdateUserRequest {
   /**
    * @name name
    * @access public
@@ -167,4 +168,30 @@ export class UpdateEndUserRequest {
   @IsEnum(GenderTypeEnum)
   @IsOptional()
   gender: GenderTypeEnum;
+}
+
+/**
+ * @class
+ * @public
+ * @name GetListUserRespone
+ * @description Get list user respone DTO.
+ */
+export class GetListUserRespone {
+  /**
+   * @name users
+   * @access public
+   * @description list of users.
+   * @type {Array<UserRespone>}
+   */
+  @ApiProperty()
+  users: Array<UserRespone>;
+
+  /**
+   * @name metadata
+   * @access public
+   * @description metadata of list of users.
+   * @type {MetadataRespone}
+   */
+  @ApiProperty()
+  metadata: MetadataRespone;
 }

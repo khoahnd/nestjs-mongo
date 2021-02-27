@@ -90,7 +90,9 @@ export class UserAuthService extends AuthService {
       if (!payload || !payload.userId || !payload.roles) {
         Exception.unauthorized(authError.ERR_TOKEN_IS_NOT_VALID);
       }
-      const user = await this.userEntity.findOne(payload.userId);
+      const user = await this.userEntity.findOne({
+        where: { _id: payload.userId },
+      });
       if (!user) {
         Exception.unauthorized(authError.ERR_INVALID_AUTHORIZATION);
       }
